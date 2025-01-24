@@ -1,0 +1,45 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+ background: url(sun.jpg);
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#tapbut{
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  color: #ffffff;
+  font: 2em sans-serif;
+background: url(sun.jpg);
+background-repeat:no-repeat;
+background-position:center;
+background-size: cover;
+transition: transform 0.5s ease;
+
+}
+
+#tapbut:active{
+  transform:scale(1.2);
+  border-style: none;
+}
