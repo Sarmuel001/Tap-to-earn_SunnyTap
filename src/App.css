@@ -9,7 +9,7 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
- background: url(sun.jpg);
+ background: url(./assets/sun.jpg);
   color: white;
 }
 
@@ -31,7 +31,7 @@ button:disabled {
   border-radius: 100px;
   color: #ffffff;
   font: 2em sans-serif;
-background: url(sun.jpg);
+background: url(./assets/sun.jpg);
 background-repeat:no-repeat;
 background-position:center;
 background-size: cover;

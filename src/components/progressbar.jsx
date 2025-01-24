@@ -10,7 +10,7 @@ function ProgressBar({ progress }) {
           height: "100%",
       
         }}
-      ></div>
+      > </div>
     </div>
   );
 }
