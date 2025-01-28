@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+import Team from './MenuContent/index'
 import ProgressBar from "./progressbar"; 
 import Toast from "./toasts";
+import MenuBar from "./menu";
+import Quests from "./MenuContent/Socialquests";
+import DailyQuiz from "./MenuContent/Quiz";
 
-function Home() {
+export function Home({}) {
   const [points, setPoints] = useState(0);
   const [taps, setTaps] = useState(0);
   const [rank, setRank] = useState("Beginner");
   const [timeLeft, setTimeLeft] = useState(0);
   const [progress, setProgress] = useState(0);
   const [toastMessage, setToastMessage] = useState("");
+  const [activeMenu, setActiveMenu] = useState(null); 
 
   useEffect(() => {
     const savedPoints = localStorage.getItem("points");
@@ -21,12 +26,25 @@ function Home() {
     if (savedRank) setRank(savedRank);
     if (resetTime) calculateTimeLeft(resetTime);
 
+
     const timer = setInterval(() => {
       if (resetTime) calculateTimeLeft(resetTime);
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("points", points);
+  }, [points]);
+
+  const addPoints = (newPoints) => {
+    setPoints((prevPoints) => prevPoints + newPoints);
+  };
 
   useEffect(() => {
     localStorage.setItem("points", points);
@@ -117,11 +135,33 @@ function Home() {
     }
   };
 
+  const header ={
+    width:'70%',
+    height:'20px',
+    padding: "06px",
+    borderRadius: "10px",
+    background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+    color: "#fff",
+    fontWeight: "bold",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    fontFamily:'Nexa',
+    fontSize:'.8rem'
+  }
+
+  const handleMenuOpen = (menu) => {
+    setActiveMenu(menu);
+  };
+
+  const handleMenuClose = () => {
+    setActiveMenu(null);
+  };
+
   return (
     <div>
-      <h1>Tap-to-Earn Game</h1>
-      <h2>Points: {points}</h2>
-      <h2>Rank: {rank}</h2>
+      <div style={{display:'flex', justifyContent:'space-around', gap:'20px'}}>
+      <h4 style={header}>$SUNNY - {points}</h4>
+      <h4 style={header}>Rank: {rank}</h4>
+      </div>
       <h3>
         {taps >= 100
           ? "You've reached the maximum taps for this hour. Please wait!"
@@ -129,11 +169,12 @@ function Home() {
       </h3>
       {timeLeft > 0 && <h4>Time left: {formatTime(timeLeft)}</h4>}
 
-      <ProgressBar progress={progress} />
-
       <button id="tapbut" onClick={handleTap} disabled={taps >= 100}>
         Tap Me!
       </button>
+      <br /><br />
+      <ProgressBar progress={progress} />
+          <MenuBar onMenuOpen={handleMenuOpen}/>
 
       {/* Toast Notification */}
       {toastMessage && <Toast message={toastMessage} />}
@@ -142,8 +183,61 @@ function Home() {
       {points === 1000 && <h3>You're on fire! Keep going to reach Amateur rank!</h3>}
       {points === 5000 && <h3>Incredible! You've become a Keeper. Aim for Senior Rank!</h3>}
       {points === 10000 && <h3>Amazing! You've reached Legendary status. You're unstoppable!</h3>}
+ 
+      {activeMenu && (
+        <div style={styles.overlay}>
+          <div style={styles.menuContainer}>
+            <button style={styles.closeButton} onClick={handleMenuClose}>
+              Close
+            </button>
+            {activeMenu === "wallet" && <div>Wallet Content</div>}
+            {activeMenu === "quests" && <div><Quests points={points} setPoints={setPoints} /></div>}
+            {activeMenu === "quiz" && <div><DailyQuiz points={points} setPoints={setPoints} /></div>}
+            {activeMenu === "team" && <div>Our Team Content</div>}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
 
+const styles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    zIndex: 1000,
+  },
+  menuContainer: {
+    width: "100%",
+    height:'40%',
+    maxWidth: "500px",
+    background: "#fff",
+    borderRadius: "15px 15px 0 0",
+    boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.1)",
+    padding: "50px",
+    textAlign: "center",
+    animation: "slideUp 0.3s ease-out",
+    color:'black',
+  },
+  closeButton: {
+    position: "absolute",
+    top: "200px",
+    right: "20px",
+    border: "none",
+    fontSize: "16px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    color:'#fff',
+    background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+    fontFamily:'Nexa'
+  },
+};
 export default Home;
