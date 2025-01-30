@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Team from './MenuContent/index'
+import AboutUs from './MenuContent/OurTeam';
 import ProgressBar from "./progressbar"; 
 import Toast from "./toasts";
 import MenuBar from "./menu";
@@ -170,9 +170,10 @@ export function Home({}) {
       {timeLeft > 0 && <h4>Time left: {formatTime(timeLeft)}</h4>}
 
       <button id="tapbut" onClick={handleTap} disabled={taps >= 100}>
+          
         Tap Me!
       </button>
-      <br /><br />
+      
       <ProgressBar progress={progress} />
           <MenuBar onMenuOpen={handleMenuOpen}/>
 
@@ -193,7 +194,7 @@ export function Home({}) {
             {activeMenu === "wallet" && <div>Wallet Content</div>}
             {activeMenu === "quests" && <div><Quests points={points} setPoints={setPoints} /></div>}
             {activeMenu === "quiz" && <div><DailyQuiz points={points} setPoints={setPoints} /></div>}
-            {activeMenu === "team" && <div>Our Team Content</div>}
+            {activeMenu === "our team" && <div><AboutUs /></div>}
           </div>
         </div>
       )}
@@ -217,8 +218,7 @@ const styles = {
   },
   menuContainer: {
     width: "100%",
-    height:'40%',
-    maxWidth: "500px",
+    maxWidth: "600px",
     background: "#fff",
     borderRadius: "15px 15px 0 0",
     boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.1)",

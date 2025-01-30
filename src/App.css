@@ -6,9 +6,10 @@
 }
 
 body {
+  background-color: white;
   font-family: Arial, sans-serif;
   text-align: center;
- background: url(./assets/sun.jpg);
+  background: url(./assets/sun.jpg);
   color: white;
 }
 
@@ -28,6 +29,7 @@ button:disabled {
   width: 200px;
   height: 200px;
   border-radius: 100px;
+  margin-bottom: 30px;
   color: #fff;
   font: 2em sans-serif;
 background: url(./assets/sun.jpg);
@@ -41,4 +43,10 @@ transition: transform 0.5s ease;
 #tapbut:active{
   transform:scale(1.2);
   border-style: none;
+}
+
+@media screen and (max-width:320px){
+  closeButton{
+    
+  }
 }

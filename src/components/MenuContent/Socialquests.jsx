@@ -46,7 +46,7 @@ function Quests({ points, setPoints }) {
 const styles = {
   container: {
     textAlign: "center",
-    padding: "20px",
+    padding: "px",
     background: "white",
     borderRadius: "10px",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -59,7 +59,7 @@ const styles = {
   list: {
     listStyle: "none",
     padding: 0,
-    margin: 0,
+    margin: 0, 
   },
   listItem: {
     margin: "10px 0",

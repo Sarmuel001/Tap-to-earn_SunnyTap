@@ -50,7 +50,6 @@ function DailyQuiz({ points, setPoints }) {
 
   return (
     <div style={styles.container}>
-      <h3 style={styles.header}>Daily Quiz</h3>
       {isQuizAvailable ? (
         <div>
           <p style={styles.question}>{quizzes[0].question}</p>
@@ -90,20 +89,21 @@ function DailyQuiz({ points, setPoints }) {
 
 const styles = {
   container: {
-    padding: "20px",
+    maxHeight:'50%',
     textAlign: "center",
+    borderRadius: "10px",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0)",
   },
   header: {
     color: "#333",
     fontWeight: "bold",
-    marginBottom: "20px",
   },
   question: {
     fontSize: "18px",
-    marginBottom: "20px",
+    marginBottom: "0px",
   },
   option: {
-    marginBottom: "10px",
+    marginBottom: "0px",
   },
   button: {
     padding: "10px 20px",

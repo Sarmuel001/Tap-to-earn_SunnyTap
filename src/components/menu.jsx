@@ -48,15 +48,10 @@ function MenuBar({onMenuOpen}) {
         <FaQuestionCircle size={20} />
         <span>Quiz</span>
       </button>
-      <button
-        style={buttonStyle}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-      >
-        <Link to="/OurTeam" style={{fontFamily:'Nexa', color:'white'}}>
-        <span>Our Team</span>
-        </Link>
+      <button style={buttonStyle} onClick={() => onMenuOpen("our team")}>
+        <span>Dev Team</span>
       </button>
+     
     </div>
   );
 }
