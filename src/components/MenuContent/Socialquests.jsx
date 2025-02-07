@@ -11,7 +11,7 @@ function Quests({ points, setPoints }) {
 
   const handleQuestClick = (quest) => {
     if (!completedQuests.includes(quest.id)) {
-      alert(`You earned ${quest.reward} points for completing this quest!`);
+      // alert(`You earned ${quest.reward} points for completing this quest!`);
       setPoints(points + quest.reward);
       setCompletedQuests([...completedQuests, quest.id]);
     }

@@ -1,6 +1,5 @@
 import React from "react";
 import { FaWallet, FaTasks, FaQuestionCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 
 function MenuBar({onMenuOpen}) {

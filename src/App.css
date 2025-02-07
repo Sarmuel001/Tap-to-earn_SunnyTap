@@ -6,47 +6,69 @@
 }
 
 body {
-  background-color: white;
+  width:100%;
+  height: 100%;
   font-family: Arial, sans-serif;
   text-align: center;
   background: url(./assets/sun.jpg);
   color: white;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 20px;
-  cursor: pointer;
-}
 
-button:disabled {
-  background-color: #ccc;
+.tapbut{
+
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-bottom: 35px;
+  color: #fff;
+  font: 2em sans-serif;
+  background: url(./assets/sun.jpg);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: cover;
+  transition: transform 0.5s ease; 
+  transition: thunder 0.2s infinite alternate;
   cursor: not-allowed;
 }
 
-#tapbut{
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  margin-bottom: 30px;
-  color: #fff;
-  font: 2em sans-serif;
-background: url(./assets/sun.jpg);
-background-repeat:no-repeat;
-background-position:center;
-background-size: cover;
-transition: transform 0.5s ease;
-
-}
-
-#tapbut:active{
+.tapbut:active{
+  animation: thunder 0.2s infinite alternate;
+  color: rgba(0, 0, 0, 0);
+  outline: 3px solid white; 
   transform:scale(1.2);
-  border-style: none;
+} 
+
+.tapbut:disabled {
+  color:rgba(0, 0, 0, 0);
+  cursor: not-allowed;
+  animation:none;
+  outline:none;
+  transform:none;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
-@media screen and (max-width:320px){
-  closeButton{
-    
-  }
+.tapbut:disabled::after {
+  content: "Come back and Tap when it's $SUNNY";  
+  line-height: 120%;
+  color: #ffffff;            
+  position: absolute;
+  top: 55%;                  
+  transform: translate(-50%, -50%); 
+  font-size: 16px;           
+  font-weight: bold;         
 }
+
+@keyframes thunder {
+  0% { box-shadow: 0 0 5px yellow, 0 0 10px yellow; }
+  50% { box-shadow: 0 0 15px white, 0 0 30px yellow; }
+  100% { box-shadow: 0 0 5px rgb(230, 230, 225), 0 0 10px yellow; }
+}
+/* @media screen and (max-width:320px){
+  closeButton{
+
+  }
+} */

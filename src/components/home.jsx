@@ -76,7 +76,7 @@ export function Home({}) {
 
   const updateRank = (points) => {
     let newRank = "Beginner";
-    if (points >= 1000 && points < 2000) newRank = "Amateur";
+    if (points >= 200 && points < 2000) newRank = "Amateur";
     else if (points >= 2000 && points < 3000) newRank = "Intermediate";
     else if (points >= 3000 && points < 5000) newRank = "Chief";
     else if (points >= 5000 && points < 8000) newRank = "Keeper";
@@ -118,7 +118,7 @@ export function Home({}) {
 
   const handleTap = () => {
     if (taps >= 100) {
-      alert("You've reached the maximum taps for this hour. Please wait!");
+      // alert("You've reached the maximum taps for this hour. Please wait!");
       return;
     }
 
@@ -157,21 +157,21 @@ export function Home({}) {
   };
 
   return (
-    <div>
+    <div >
       <div style={{display:'flex', justifyContent:'space-around', gap:'20px'}}>
       <h4 style={header}>$SUNNY - {points}</h4>
       <h4 style={header}>Rank: {rank}</h4>
       </div>
-      <h3>
+      <h4>
         {taps >= 100
           ? "You've reached the maximum taps for this hour. Please wait!"
           : `Taps this hour: ${taps}/100`}
-      </h3>
-      {timeLeft > 0 && <h4>Time left: {formatTime(timeLeft)}</h4>}
+      </h4>
+      {timeLeft > 0 && <h4>Time left until next tap: {formatTime(timeLeft)}</h4>}
 
-      <button id="tapbut" onClick={handleTap} disabled={taps >= 100}>
           
-        Tap Me!
+      <button className='tapbut' onClick={handleTap} disabled={taps >= 100}>
+            <h4>Tap!</h4>
       </button>
       
       <ProgressBar progress={progress} />
@@ -191,7 +191,8 @@ export function Home({}) {
             <button style={styles.closeButton} onClick={handleMenuClose}>
               Close
             </button>
-            {activeMenu === "wallet" && <div>Wallet Content</div>}
+            {activeMenu === "wallet" && <div>
+               <img src="https://png.pngtree.com/png-vector/20220725/ourmid/pngtree-server-maintenance-png-image_6059383.png" alt="walletConnect" style={{width:'90px',height:'90px'}} /> <br /> Under Development... <br /> Come back!</div>}
             {activeMenu === "quests" && <div><Quests points={points} setPoints={setPoints} /></div>}
             {activeMenu === "quiz" && <div><DailyQuiz points={points} setPoints={setPoints} /></div>}
             {activeMenu === "our team" && <div><AboutUs /></div>}
@@ -219,6 +220,7 @@ const styles = {
   menuContainer: {
     width: "100%",
     maxWidth: "600px",
+    height:'210px',
     background: "#fff",
     borderRadius: "15px 15px 0 0",
     boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.1)",
@@ -229,7 +231,7 @@ const styles = {
   },
   closeButton: {
     position: "absolute",
-    top: "200px",
+    top: "230px",
     right: "20px",
     border: "none",
     fontSize: "16px",
