@@ -23,7 +23,7 @@ function App() {
   {loading ? (
     <Preloader />
   ) : (
-    <Home />,
+    // <Home />,
   < RouterProvider router={router} />
   )}
     </div>

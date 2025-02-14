@@ -31,7 +31,7 @@ function MenuBar({onMenuOpen}) {
       style={{
         display: "flex",
         justifyContent: "space-evenly",
-        marginTop: "20px",
+        marginTop: "10px",
         padding: "10px 0",
       }}
     >

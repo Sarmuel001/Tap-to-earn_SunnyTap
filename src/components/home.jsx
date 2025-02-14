@@ -136,16 +136,17 @@ export function Home({}) {
   };
 
   const header ={
-    width:'70%',
-    height:'20px',
-    padding: "06px",
+    width:'50%',
+    height:'13px',
+    padding: "015px",
     borderRadius: "10px",
     background: "linear-gradient(135deg, #6a11cb, #2575fc)",
     color: "#fff",
     fontWeight: "bold",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily:'Nexa',
-    fontSize:'.8rem'
+    fontSize:'.9rem',
+    marginTop:'0px'
   }
 
   const handleMenuOpen = (menu) => {
@@ -157,7 +158,7 @@ export function Home({}) {
   };
 
   return (
-    <div >
+    <div>
       <div style={{display:'flex', justifyContent:'space-around', gap:'20px'}}>
       <h4 style={header}>$SUNNY - {points}</h4>
       <h4 style={header}>Rank: {rank}</h4>
@@ -168,8 +169,8 @@ export function Home({}) {
           : `Taps this hour: ${taps}/100`}
       </h4>
       {timeLeft > 0 && <h4>Time left until next tap: {formatTime(timeLeft)}</h4>}
-
-          
+   
+          <br /> 
       <button className='tapbut' onClick={handleTap} disabled={taps >= 100}>
             <h4>Tap!</h4>
       </button>
@@ -191,7 +192,7 @@ export function Home({}) {
             <button style={styles.closeButton} onClick={handleMenuClose}>
               Close
             </button>
-            {activeMenu === "wallet" && <div>
+            {activeMenu === "wallet" && <div style={{ marginTop:'40px', fontSize:'18px'}}>
                <img src="https://png.pngtree.com/png-vector/20220725/ourmid/pngtree-server-maintenance-png-image_6059383.png" alt="walletConnect" style={{width:'90px',height:'90px'}} /> <br /> Under Development... <br /> Come back!</div>}
             {activeMenu === "quests" && <div><Quests points={points} setPoints={setPoints} /></div>}
             {activeMenu === "quiz" && <div><DailyQuiz points={points} setPoints={setPoints} /></div>}
@@ -207,10 +208,10 @@ export function Home({}) {
 const styles = {
   overlay: {
     position: "fixed",
-    top: 0,
+    top:' 220px',
     left: 0,
     width: "100%",
-    height: "100%",
+    
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     display: "flex",
     alignItems: "flex-end",
@@ -221,6 +222,7 @@ const styles = {
     width: "100%",
     maxWidth: "600px",
     height:'210px',
+    
     background: "#fff",
     borderRadius: "15px 15px 0 0",
     boxShadow: "0px -2px 10px rgba(0, 0, 0, 0.1)",
@@ -231,7 +233,7 @@ const styles = {
   },
   closeButton: {
     position: "absolute",
-    top: "230px",
+    top: "30px",
     right: "20px",
     border: "none",
     fontSize: "16px",

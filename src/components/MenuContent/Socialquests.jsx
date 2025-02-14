@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Quests({ points, setPoints }) {
   const [completedQuests, setCompletedQuests] = useState([]);
@@ -9,11 +9,19 @@ function Quests({ points, setPoints }) {
     { id: 3, name: "Subscribe to our YouTube Channel", link: "https://youtube.com/adebayosunday51", reward: 50 },
   ];
 
+  // Load completed quests from localStorage
+  useEffect(() => {
+    const savedQuests = JSON.parse(localStorage.getItem("completedQuests")) || [];
+    setCompletedQuests(savedQuests);
+  }, []);
+
   const handleQuestClick = (quest) => {
     if (!completedQuests.includes(quest.id)) {
-      // alert(`You earned ${quest.reward} points for completing this quest!`);
       setPoints(points + quest.reward);
-      setCompletedQuests([...completedQuests, quest.id]);
+      const updatedQuests = [...completedQuests, quest.id];
+
+      setCompletedQuests(updatedQuests);
+      localStorage.setItem("completedQuests", JSON.stringify(updatedQuests)); // Save to localStorage
     }
   };
 
@@ -32,7 +40,6 @@ function Quests({ points, setPoints }) {
                 ...styles.link,
                 ...(completedQuests.includes(quest.id) ? styles.completedLink : {}),
               }}
-              disabled={completedQuests.includes(quest.id)} 
             >
               {completedQuests.includes(quest.id) ? "Completed" : `${quest.name} (+${quest.reward} points)`}
             </a>
@@ -46,10 +53,11 @@ function Quests({ points, setPoints }) {
 const styles = {
   container: {
     textAlign: "center",
-    padding: "px",
+    marginTop: "40px",
     background: "white",
     borderRadius: "10px",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    padding: "20px",
   },
   header: {
     color: "#333",
@@ -59,7 +67,7 @@ const styles = {
   list: {
     listStyle: "none",
     padding: 0,
-    margin: 0, 
+    margin: 0,
   },
   listItem: {
     margin: "10px 0",

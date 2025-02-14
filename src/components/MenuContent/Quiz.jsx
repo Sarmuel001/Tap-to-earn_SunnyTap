@@ -32,15 +32,13 @@ function DailyQuiz({ points, setPoints }) {
   };
 
   const handleSubmitQuiz = () => {
-    // Check if the answer is correct
     if (userAnswer === quizzes[0].correctAnswer) {
-      setQuizScore(20); // Correct answer gets 20 points
-      setPoints(points + 20); // Add points to the total score
+      setQuizScore(20); 
+      setPoints(points + 20); 
     } else {
-      setQuizScore(0); // Incorrect answer gets 0 points
+      setQuizScore(0);
     }
 
-    // Store the current date in localStorage to prevent further quiz attempts today
     const currentDate = new Date().toLocaleDateString();
     localStorage.setItem("lastQuizDate", currentDate);
 
@@ -99,10 +97,10 @@ const styles = {
   },
   question: {
     fontSize: "18px",
-    marginBottom: "0px",
+    marginBottom: "05px",
   },
   option: {
-    marginBottom: "0px",
+    marginBottom: "10px",
   },
   button: {
     padding: "10px 20px",
@@ -114,8 +112,8 @@ const styles = {
     cursor: "pointer",
   },
   message: {
-    fontSize: "18px",
-    color: "#ff0000",
+    fontSize: "18px", 
+    marginTop:'60px',
   },
   result: {
     marginTop: "20px",

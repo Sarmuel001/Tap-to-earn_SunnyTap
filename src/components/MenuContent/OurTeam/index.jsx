@@ -189,7 +189,11 @@ export default function AboutUs() {
 
 const styles = {
   container: {
-    padding: "20px",
+ 
+ 
+    padding: "0px",
+    marginTop:'15px',
+    backgroundColor:'white',
   },
   grid: {
     display: "flex",
@@ -202,7 +206,7 @@ const styles = {
     background: "linear-gradient(135deg, #6a11cb, #2575fc)",
     borderRadius: "15px",
     padding: "0px",
-    boxShadow: "10px 41px 8px rgba(0,0,0,0.1)",
+    boxShadow: "0px 10px 8px rgba(0,0,0,0.1)",
     textAlign: "center",
     width: "260px",
     color: "#fff",

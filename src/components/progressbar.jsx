@@ -2,7 +2,7 @@ import React from "react";
 
 function ProgressBar({ progress }) {
   return (
-    <div style={{ border: "1px solid #fff", width: "100%", height: "20px", marginBottom: "20px" }}>
+    <div style={{ border: "1px solid #fff", width: "100%", height: "20px", marginBottom: "0px" }}>
       <div
         style={{
           width: `${progress}%`,
