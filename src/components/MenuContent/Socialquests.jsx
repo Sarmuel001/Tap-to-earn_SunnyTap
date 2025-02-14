@@ -57,7 +57,7 @@ const styles = {
     background: "white",
     borderRadius: "10px",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-    padding: "20px",
+    
   },
   header: {
     color: "#333",

@@ -82,15 +82,17 @@ export function Home({}) {
     else if (points >= 5000 && points < 8000) newRank = "Keeper";
     else if (points >= 8000 && points < 10000) newRank = "Senior Rank";
     else if (points >= 10000) newRank = "Legendary";
-
-    if (newRank !== rank) {
+  
+    const lastAnnouncedRank = localStorage.getItem("lastAnnouncedRank");
+  
+    if (newRank !== rank && newRank !== lastAnnouncedRank) {
       setToastMessage(`Congratulations! You've advanced to ${newRank}! 🎉`);
-      setTimeout(() => setToastMessage(""), 5000);
+      localStorage.setItem("lastAnnouncedRank", newRank); // Save the rank that has been announced
+      setTimeout(() => setToastMessage(""), 3000);
     }
-
     setRank(newRank);
   };
-
+  
   const calculateProgress = (points) => {
     let lowerBound = 0;
     let upperBound = 1000;
